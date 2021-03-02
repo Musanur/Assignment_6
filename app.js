@@ -1,3 +1,4 @@
+document.querySelector('body').style.overflow ="hidden";
 const imagesArea = document.querySelector('.images');
 const gallery = document.querySelector('.gallery');
 const galleryHeader = document.querySelector('.gallery-header');
@@ -44,15 +45,17 @@ const getImages = (query) => {
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
-  element.classList.add('added');
+  element.classList.toggle('added');
  
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
+    return img;
   } else {
-    alert('Hey, Already added !')
+    sliders.splice(item, 1);
   }
 }
+
 var timer
 const createSlider = () => {
   // check slider image length
