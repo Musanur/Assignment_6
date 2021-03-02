@@ -75,12 +75,16 @@ const createSlider = () => {
   imagesArea.style.display = 'none';
   const duration = document.getElementById('doration').value || 1000;
   sliders.forEach(slide => {
-    let item = document.createElement('div')
+    if (duration > 0) {
+      let item = document.createElement('div')
     item.className = "slider-item";
     item.innerHTML = `<img class="w-100"
     src="${slide}"
     alt="">`;
     sliderContainer.appendChild(item)
+    } else {
+      alert('Please Give A positive number')
+    }
   })
   changeSlide(0)
   timer = setInterval(function () {
